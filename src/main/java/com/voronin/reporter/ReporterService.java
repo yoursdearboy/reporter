@@ -12,9 +12,9 @@ class ReporterService {
     @Value("${libreoffice.path}")
     private String libreofficePath;
 
-    private final ReportLoader loader;
+    private final UniversalReportLoader loader;
 
-    ReporterService(ReportLoader loader) {
+    ReporterService(UniversalReportLoader loader) {
         this.loader = loader;
     }
 
