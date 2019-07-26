@@ -8,7 +8,7 @@ RUN ./gradlew build -x test
 
 FROM openjdk:8-alpine
 
-ENV VERSION 0.0.1-SNAPSHOT
+ENV VERSION 0.0.1
 
 RUN apk add --no-cache \
     libreoffice-writer \
