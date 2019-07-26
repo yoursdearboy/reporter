@@ -19,6 +19,7 @@ def jythonVersion = '2.7.1'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'commons-io:commons-io:2.6'
 	implementation "org.apache.poi:poi-ooxml:${poiVersion}"
 	runtime "org.codehaus.groovy:groovy-jsr223:${groovyVersion}"
 	runtime "org.python:jython-standalone:${jythonVersion}"

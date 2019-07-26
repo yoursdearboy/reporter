@@ -3,9 +3,9 @@ package com.voronin.reporter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-class ReporterException extends Exception {
-    ReporterException(String s) {
+@ResponseStatus(value = HttpStatus.NOT_FOUND)
+class ReportLoadingException extends Exception {
+    ReportLoadingException(String s) {
         super(s);
     }
 }

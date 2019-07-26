@@ -1,5 +1,7 @@
 package com.voronin.reporter;
 
+import org.apache.commons.io.FilenameUtils;
+
 import javax.script.ScriptContext;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
@@ -16,16 +18,22 @@ class Reporter {
         this.report = report;
     }
 
-    private void initEngine(String engineName) throws ReporterException {
-        engine = scriptEngineManager.getEngineByName(engineName);
+    private void initEngine() throws ReporterException {
+        if (report.getEngine() != null) {
+            engine = scriptEngineManager.getEngineByName(report.getEngine());
+        } else if (report.getURI() != null) {
+            engine = scriptEngineManager.getEngineByExtension(FilenameUtils.getExtension(report.getURI()));
+        } else {
+            throw new ReporterException("Reports without URI must set engine explicitly.");
+        }
         if (engine == null) {
-            throw new ReporterException(String.format("Engine \"%s\" not found.", engineName));
+            throw new ReporterException("Engine not found.");
         }
         engine.getContext().setAttribute("vars", vars, ScriptContext.ENGINE_SCOPE);
     }
 
     public void build() throws ReporterException {
-        initEngine(report.getEngine());
+        initEngine();
         try {
             engine.eval(report.getContent());
         } catch(ScriptException e) {
