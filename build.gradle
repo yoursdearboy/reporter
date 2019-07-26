@@ -14,10 +14,14 @@ repositories {
 }
 
 def poiVersion = '4.1.0'
+def groovyVersion = '2.5.7'
+def jythonVersion = '2.7.1'
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation "org.apache.poi:poi:${poiVersion}"
+	runtime "org.codehaus.groovy:groovy-jsr223:${groovyVersion}"
+	runtime "org.python:jython-standalone:${jythonVersion}"
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
