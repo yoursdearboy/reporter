@@ -13,7 +13,11 @@ repositories {
 	mavenCentral()
 }
 
+def poiVersion = '4.1.0'
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation "org.apache.poi:poi:${poiVersion}"
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
